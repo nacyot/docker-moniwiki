@@ -1,4 +1,4 @@
-# docker-xpressengine
+# docker-moniwiki
 
 This is Dockerfile for building
 [moniwiki](http://dev.naver.com/projects/moniwiki/) application
