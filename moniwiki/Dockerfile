@@ -16,6 +16,7 @@ WORKDIR /tmp
 RUN \
   curl -L -O https://github.com/wkpark/moniwiki/archive/v1.2.5.tar.gz &&\
   tar xf /tmp/v1.2.5.tar.gz &&\
+  mv moniwiki-1.2.5 moniwiki &&\
   mv moniwiki /var/www/html/ &&\
   chown -R www-data:www-data /var/www/html/moniwiki &&\
   chmod 777 /var/www/html/moniwiki/data/ /var/www/html/moniwiki/ &&\
