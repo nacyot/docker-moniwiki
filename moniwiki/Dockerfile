@@ -13,10 +13,10 @@ RUN \
 
 # Install Moniwiki
 WORKDIR /tmp
+# Github Version is no wikiseed (use, naver's version)
 RUN \
-  curl -L -O https://github.com/wkpark/moniwiki/archive/v1.2.5.tar.gz &&\
-  tar xf /tmp/v1.2.5.tar.gz &&\
-  mv moniwiki-1.2.5 moniwiki &&\
+  curl -L -O http://dev.naver.com/frs/download.php/11750/moniwiki-1.2.5.tgz &&\
+  tar xf /tmp/moniwiki-1.2.5.tgz &&\
   mv moniwiki /var/www/html/ &&\
   chown -R www-data:www-data /var/www/html/moniwiki &&\
   chmod 777 /var/www/html/moniwiki/data/ /var/www/html/moniwiki/ &&\
