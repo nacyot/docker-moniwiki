@@ -14,8 +14,8 @@ RUN \
 # Install Moniwiki
 WORKDIR /tmp
 RUN \
-  curl -L -O http://dev.naver.com/frs/download.php/8193/moniwiki-1.2.1.tgz &&\
-  tar xf /tmp/moniwiki-1.2.1.tgz &&\
+  curl -L -O https://github.com/wkpark/moniwiki/archive/v1.2.5.tar.gz &&\
+  tar xf /tmp/v1.2.5.tar.gz &&\
   mv moniwiki /var/www/html/ &&\
   chown -R www-data:www-data /var/www/html/moniwiki &&\
   chmod 777 /var/www/html/moniwiki/data/ /var/www/html/moniwiki/ &&\
