@@ -1,0 +1,30 @@
+FROM centos:7
+MAINTAINER Kyeongjun Yoon <jellypo@gmail.com>
+
+# Install basic packages
+RUN  yum -y install yum-utils
+
+## Install php and apache
+RUN \
+  yum -y install httpd php php-mbstring curl rcs git &&\
+  mkdir -vp /tmp
+#
+## Install Moniwiki
+WORKDIR /tmp
+RUN \
+  git clone https://github.com/wkpark/moniwiki.git &&\
+  curl -L -O http://dev.naver.com/frs/download.php/8193/moniwiki-1.2.1.tgz &&\
+  tar zxvf /tmp/moniwiki-1.2.1.tgz -k ;\
+  mkdir -vp /var/www/html/ &&\
+  mv -v moniwiki /var/www/html/ &&\
+  chmod 2777 /var/www/html/moniwiki/data/ /var/www/html/moniwiki/ &&\
+  chmod +x /var/www/html/moniwiki/secure.sh &&\
+  /var/www/html/moniwiki/secure.sh
+
+#
+#ENV APACHE_RUN_USER www-data
+#ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/httpd
+#
+EXPOSE 80
+CMD bash -c "source /etc/sysconfig/httpd && /usr/sbin/httpd -D FOREGROUND"
